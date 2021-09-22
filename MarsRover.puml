@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Plateau{
+    + int height;
+    + int width;
+    - int plateauGrid[][];
+
+    + void Plateau(int height, int width);
+    + void printPlateau();
+    + boolean isPositionFree(int x, int y);
+    + void setPositionOccupied(int x, int y);
+    + void setPositionFree(int x, int y);
+}
+
+class MarsRover{
+    + int position[];
+    + Orientation orientation;
+
+    void MarsRover(int x, int y, Orientation orientation);
+
+    + void execute(char command);
+    - int[] calculateNewPosition(int command);
+    + void printPositionAndOrientation();
+}
+enum Orientation{
+    N, E, S, W
+}
+@enduml
