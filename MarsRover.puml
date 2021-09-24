@@ -22,6 +22,7 @@ class MarsRover{
     + void execute(char command);
     - int[] calculateNewPosition(int command);
     + void printPositionAndOrientation();
+    + int[] getPosition();
 }
 enum Orientation{
     N, E, S, W

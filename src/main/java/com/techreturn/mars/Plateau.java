@@ -1,25 +1,24 @@
 package com.techreturn.mars;
 
-import java.sql.Array;
-
 public class Plateau {
-    public int height;
-    public int width;
+    public int topRow;
+    public int lastColumn;
     private int[][] plateauGrid;
 
-    public Plateau(int height, int width){
-        this.height = height;
-        this.width = width;
-        this.plateauGrid = new int[width][height];
-        for(int i = 0; i<width; ++i){
-            for(int j = 0; j<height; ++j){
+    public Plateau(int topRow, int lastColumn){
+            this.topRow = topRow;
+            this.lastColumn = lastColumn;
+            this.plateauGrid = new int[topRow+1][lastColumn+1];
+
+        for(int i = lastColumn; i>=0; --i){
+            for(int j = topRow; j>=0; --j){
                 plateauGrid[i][j] = 0;
             }
         }
     }
     public void printPlateau(){
-        for(int i = 0; i < width; ++i){
-            for(int j = 0; j< height; ++j) {
+        for(int j = topRow; j >= 0; --j){
+            for(int i = 0; i<= lastColumn; ++i) {
                 System.out.print(plateauGrid[i][j]);
             }
             System.out.print("\n");
