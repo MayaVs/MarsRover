@@ -5,7 +5,8 @@ public class Plateau {
     public int lastColumn;
     private int[][] plateauGrid;
 
-    public Plateau(int topRow, int lastColumn){
+    public Plateau(int topRow, int lastColumn) throws Exception {
+        if(topRow < 0 || lastColumn < 0) throw new Exception("Invalid coordinates.");
             this.topRow = topRow;
             this.lastColumn = lastColumn;
             this.plateauGrid = new int[topRow+1][lastColumn+1];
@@ -24,11 +25,22 @@ public class Plateau {
             System.out.print("\n");
         }
     }
-    public boolean isPositionFree(int x, int y){
-        return plateauGrid[x][y] == 0;
+    public boolean isPositionFree(int x, int y) throws Exception {
+        boolean isFree = false;
+        try{
+            isFree = plateauGrid[x][y] == 0;
+        } catch (Exception e){
+            throw new Exception("Invalid position.");
+        }
+        return isFree;
     }
-    public void setPositionOccupied(int x, int y) {
-        plateauGrid[x][y] = 1;
+    public void setPositionOccupied(int x, int y) throws Exception {
+        try{
+            plateauGrid[x][y] = 1;
+        } catch(Exception e){
+            throw new Exception("Invalid position.");
+        }
+
     }
 
     public void setPositionFree(int x, int y){
