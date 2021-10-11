@@ -2,7 +2,7 @@ package com.techreturn.mars;
 
 import java.util.Locale;
 
-public class Rover {
+public class Rover implements MarsVehicles{
     public int[] position = new int[2];
     public Orientation orientation;
     public Plateau plateau;
@@ -40,6 +40,7 @@ public class Rover {
         return true;
     }
 
+    @Override
     public boolean sendCommands(String commands) throws Exception {
 
         commands = commands.toUpperCase(Locale.ROOT);
