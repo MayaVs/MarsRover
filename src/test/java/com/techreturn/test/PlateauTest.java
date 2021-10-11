@@ -1,6 +1,5 @@
 package com.techreturn.test;
 
-import com.sun.source.tree.AssertTree;
 import com.techreturn.mars.Plateau;
 import org.junit.Rule;
 import org.junit.Test;

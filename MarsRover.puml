@@ -2,33 +2,39 @@
 'https://plantuml.com/class-diagram
 
 class Plateau{
-    + int topRow;
-    + int lastColumn;
+    + int height;
+    + int width;
     - int plateauGrid[][];
 
-    + Plateau(int topRow, int lastColumn);
+    + void Plateau(int height, int width);
     + void printPlateau();
     + boolean isPositionFree(int x, int y);
     + void setPositionOccupied(int x, int y);
     + void setPositionFree(int x, int y);
 }
 
-class Rover{
+class Rover extends MarsVehicles{
     + int position[];
     + Orientation orientation;
     + Plateau plateau;
 
-    + Rover(int x, int y, Orientation orientation, Plateau plateau);
-    + boolean execute(char command);
-    + int[] calculateNewPosition();
+    void MarsRover(int x, int y, Orientation orientation);
+
+    + void execute(char command);
+    - int[] calculateNewPosition(int command);
     + void printPositionAndOrientation();
-    + int[] getPosition();
-    + Orientation getOrientation();
 }
-Plateau "1" -> "many" Rover
+
+class MarsVehicles{
+    + Plateau plateau;
+    + Stack<MarsVehicles> vehicles;
+}
+
 enum Orientation{
     N, E, S, W
-    + Orientation left();
-    + Orientation right();
+
+    - static Orientation[] vals;
+    + left();
+    + right();
 }
 @enduml

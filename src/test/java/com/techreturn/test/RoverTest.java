@@ -74,4 +74,19 @@ public class RoverTest {
         //Assert
         exceptionRule.expectMessage("Invalid position.");
     }
+
+    @Test
+    public void sendMultipleCommandsTest() throws Exception {
+        //Arrange
+        Rover rover = new Rover(0, 0, Orientation.N, plateau);
+
+        //Act
+        rover.sendCommands("mmm");
+        int[] newPos = rover.getPosition();
+        int[] expectedPos = {0, 3};
+
+
+        //Assert
+        assertTrue(Arrays.equals(newPos, expectedPos));
+    }
 }

@@ -3,7 +3,6 @@ import com.techreturn.mars.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Locale;
 import java.util.Stack;
 
 public class Main {
@@ -76,19 +75,16 @@ public class Main {
                     new InputStreamReader(System.in));
 
             // Reading data using readLine
-            String roverCommands = reader.readLine().toUpperCase(Locale.ROOT);
+            String roverCommands = reader.readLine();
 
-            if (!roverCommands.matches("^[MLR]+$")) {
-                System.out.println("Invalid  commands.");
-                continue;
-            }
-
-            for (char c : roverCommands.toCharArray()) {
-                try {
-                    rovers.firstElement().execute(c);
-                } catch (Exception e) {
+            try {
+                Rover rover = rovers.firstElement();
+                if(!rover.sendCommands(roverCommands)){
                     System.out.println("Can't execute commands.");
+                    continue;
                 }
+            } catch (Exception e) {
+                System.out.println("Can't execute commands.");
             }
             plateau.printPlateau();
             rovers.firstElement().printPositionAndOrientation();

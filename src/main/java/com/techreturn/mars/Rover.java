@@ -1,5 +1,7 @@
 package com.techreturn.mars;
 
+import java.util.Locale;
+
 public class Rover {
     public int[] position = new int[2];
     public Orientation orientation;
@@ -32,6 +34,21 @@ public class Rover {
                 this.position = newPosition;
                 plateau.setPositionOccupied(position[0], position[1]);
             } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean sendCommands(String commands) throws Exception {
+
+        commands = commands.toUpperCase(Locale.ROOT);
+        if (!commands.matches("^[MLR]+$")) {
+            throw new Exception("Invalid  commands.");
+        }
+
+        for(char c: commands.toCharArray()){
+            if(!execute(c)){
                 return false;
             }
         }
